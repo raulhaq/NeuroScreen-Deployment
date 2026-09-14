@@ -1,0 +1,811 @@
+/* NeuroScreen shared stylesheet
+   Refactored from the original Login, Upload, and Results pages.
+   Visual design and existing class names are preserved.
+   Upload/Login page-specific rules are scoped to their body classes.
+*/
+
+:root {
+    --cream: #F6F4EC; --cream-dim: #EFEDE2; --ink: #111111; --ink-soft: #5B5B54;
+    --lime: #D4FF5C; --lime-deep: #A6D62E; --line: #E1DECF; --white: #FFFFFF;
+    --amber: #C98A3E; --amber-bg: #FBF0DF; --red: #C4432B; --red-bg: #FBEAE6;
+    --green-bg: #E9F5DD; --error: #C4432B; --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream); color: var(--ink); font-family: 'Inter', sans-serif;
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Inter Tight', sans-serif; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; }
+  .logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+  .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink); }
+  .user-chip { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-soft); }
+  .user-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--lime); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; color: var(--ink); }
+
+
+  .page-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-new-screening {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--line);
+  padding: 11px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-new-screening:hover {
+  background: var(--cream-dim);
+  border-color: var(--ink);
+}
+  .page-head { padding: 12px 0 28px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 6px; background: var(--white);
+    border: 1px solid var(--line); padding: 6px 14px; border-radius: 100px;
+    font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 12px;
+  }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lime-deep); }
+  h1 { font-size: 27px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 4px; }
+  .patient-meta { font-size: 13.5px; color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; }
+
+  .progress-steps {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    }
+
+    .progress-step {
+    flex: 1;
+    }
+
+    .progress-bar {
+    height: 4px;
+    border-radius: 4px;
+    background: #E5E2D8;
+    margin-bottom: 8px;
+    }
+
+    .progress-step.active .progress-bar,
+    .progress-step.done .progress-bar {
+    background: #111111;
+    }
+
+    .progress-label {
+    font-size: 11.5px;
+    color: var(--ink);
+    font-weight: 600;
+    }
+
+  .btn-download {
+    background: var(--ink); color: var(--white); border: none;
+    padding: 12px 22px; border-radius: 100px; font-size: 14px; font-weight: 600;
+    font-family: 'Inter', sans-serif; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .result-hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; margin-bottom: 16px; }
+  .score-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+  .score-label { font-size: 12.5px; color: var(--ink-soft); font-weight: 600; margin-bottom: 6px; }
+  .score-row { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
+  .score-value { font-family: 'IBM Plex Mono', monospace; font-size: 46px; font-weight: 500; }
+  .score-tag { font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 100px; }
+  .score-tag.asd { background: var(--red-bg); color: var(--red); }
+  .score-tag.normal { background: var(--green-bg); color: #4B7A1E; }
+  .score-desc { font-size: 13.5px; color: var(--ink-soft); }
+  .score-raw { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+
+  .uncertainty-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+  .uncertainty-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 100px; font-size: 13.5px; font-weight: 700; margin-bottom: 14px; width: fit-content; }
+  .uncertainty-badge.rendah { background: var(--green-bg); color: #4B7A1E; }
+  .uncertainty-badge.sedang { background: var(--amber-bg); color: var(--amber); }
+  .uncertainty-badge.tinggi { background: var(--red-bg); color: var(--red); }
+  .uncertainty-bar-bg { height: 8px; background: var(--cream-dim); border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+  
+  .uncertainty-bar-fill {
+    height: 100%;
+    background: var(--amber);
+    border-radius: 8px;
+    transition: width 0.3s ease, background-color 0.2s ease;
+    }
+
+    .uncertainty-bar-fill.rendah {
+    background: #4B7A1E;
+    }
+
+    .uncertainty-bar-fill.sedang {
+    background: var(--amber);
+    }
+
+    .uncertainty-bar-fill.tinggi {
+    background: var(--red);
+    }
+  .uncertainty-note { font-size: 12.5px; color: var(--ink-soft); }
+  .segment-info { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--ink-soft); margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); }
+
+  .section-tag { display: inline-block; background: var(--lime); color: var(--ink); font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 100px; margin-bottom: 14px; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 4px; }
+  .section-desc { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 18px; }
+
+  .xai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .xai-panel { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+  .xai-panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .xai-panel-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); }
+  .xai-badge { font-size: 11px; font-weight: 700; background: var(--lime); color: var(--ink); padding: 4px 10px; border-radius: 100px; }
+
+  .xai-image-wrap { display: flex; justify-content: center; align-items: center; min-height: 220px; border-radius: 8px; overflow: hidden; background: var(--cream); }
+  .xai-image { width: 100%; height: auto; display: block; object-fit: contain; }
+  .xai-caption { font-size: 12.5px; color: var(--ink-soft); margin-top: 12px; }
+
+  .topo-wrap { display: flex; justify-content: center; align-items: center; min-height: 220px; }
+  .topo-wrap .xai-image { max-height: 320px; width: auto; max-width: 100%; }
+  .empty-state { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; margin-bottom: 30px; }
+  .empty-state p { color: var(--ink-soft); margin: 8px 0 16px; }
+
+  .disclaimer-strip { display: flex; align-items: center; gap: 14px; background: var(--cream-dim); border-radius: var(--radius); padding: 18px 22px; margin: 20px 0 40px; }
+  .disclaimer-strip svg { flex-shrink: 0; }
+  .disclaimer-strip p { font-size: 13px; color: var(--ink-soft); }
+  .disclaimer-strip strong { color: var(--ink); }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; text-align: center; }
+  .footer-mark { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-soft); }
+
+  @media (max-width: 860px) {
+    .result-hero, .xai-grid { grid-template-columns: 1fr; }
+    .page-head { flex-direction: column; align-items: flex-start; }
+  }
+
+/* Login page body behavior from original Login.html */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==================== UPLOAD PAGE ==================== */
+
+.upload-page .wrap {
+max-width: 900px; margin: 0 auto; padding: 0 32px;
+}
+
+.upload-page nav {
+display: flex; align-items: center; justify-content: space-between; padding: 24px 0; max-width: 1120px; margin: 0 auto; padding-left: 32px; padding-right: 32px;
+}
+
+.upload-page .logo {
+display: flex; align-items: center; gap: 9px; text-decoration: none;
+}
+
+.upload-page .logo-text {
+font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink);
+}
+
+.upload-page .user-chip {
+display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-soft);
+}
+
+.upload-page .user-avatar {
+width: 28px; height: 28px; border-radius: 50%; background: var(--lime); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; color: var(--ink);
+}
+
+.upload-page .page-head {
+padding: 20px 0 32px;
+}
+
+.upload-page .eyebrow {
+display: inline-flex; align-items: center; gap: 6px; background: var(--white);
+    border: 1px solid var(--line); padding: 6px 14px; border-radius: 100px;
+    font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 16px;
+}
+
+.upload-page .eyebrow .dot {
+width: 6px; height: 6px; border-radius: 50%; background: var(--lime-deep);
+}
+
+.upload-page h1 {
+font-size: 30px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px;
+}
+
+.upload-page .page-sub {
+font-size: 15px; color: var(--ink-soft);
+}
+
+.upload-page .progress-steps {
+display: flex; gap: 8px; margin-bottom: 36px;
+}
+
+.upload-page .progress-step {
+flex: 1;
+}
+
+.upload-page .progress-bar {
+height: 4px; border-radius: 4px; background: var(--line); margin-bottom: 8px;
+}
+
+.upload-page .progress-bar.active {
+background: var(--lime-deep);
+}
+
+.upload-page .progress-bar.done {
+background: var(--ink);
+}
+
+.upload-page .progress-label {
+font-size: 11.5px; color: var(--ink-soft); font-weight: 600;
+}
+
+.upload-page .progress-label.active {
+color: var(--ink);
+}
+
+.upload-page .form-card {
+background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px; margin-bottom: 20px;
+}
+
+.upload-page .form-card h2 {
+font-size: 17px; font-weight: 700; margin-bottom: 20px;
+}
+
+.upload-page .form-row {
+display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+
+.upload-page .field {
+margin-bottom: 18px;
+}
+
+.upload-page .field label {
+display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px;
+}
+
+.upload-page .field input, .upload-page .field select {
+width: 100%; padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 8px;
+    font-size: 14.5px; font-family: "Inter", sans-serif; background: var(--cream);
+    color: var(--ink); outline: none; transition: border-color 0.15s ease;
+}
+
+.upload-page .field input:focus, .upload-page .field select:focus {
+border-color: var(--ink);
+}
+
+.upload-page .upload-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+
+.upload-page .upload-zone {
+border: 1.5px dashed var(--line); border-radius: 10px; padding: 28px 18px;
+    text-align: center; background: var(--cream); cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.upload-page .upload-zone:hover {
+border-color: var(--lime-deep); background: var(--cream-dim);
+}
+
+.upload-page .upload-zone.filled {
+border-style: solid; border-color: var(--lime-deep); background: var(--cream-dim);
+}
+
+.upload-page .upload-icon {
+width: 38px; height: 38px; border-radius: 10px; background: var(--white);
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+}
+
+.upload-page .upload-title {
+font-size: 13.5px; font-weight: 700; margin-bottom: 4px;
+}
+
+.upload-page .upload-hint {
+font-size: 12px; color: var(--ink-soft);
+}
+
+.upload-page .upload-filename {
+font-size: 12.5px; font-family: "IBM Plex Mono", monospace; color: var(--ink); margin-top: 8px;
+}
+
+.upload-page input[type="file"] {
+display: none;
+}
+
+.upload-page .form-actions {
+display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px;
+}
+
+.upload-page .btn-primary {
+background: var(--ink); color: var(--white); border: none;
+    padding: 13px 28px; border-radius: 100px; font-size: 14.5px; font-weight: 600;
+    font-family: "Inter", sans-serif; cursor: pointer; transition: opacity 0.15s ease;
+}
+
+.upload-page .btn-primary:hover {
+opacity: 0.88;
+}
+
+.upload-page .btn-primary:disabled {
+opacity: 0.4; cursor: not-allowed;
+}
+
+.upload-page .btn-secondary {
+background: transparent; color: var(--ink); border: 1.5px solid var(--line);
+    padding: 13px 24px; border-radius: 100px; font-size: 14.5px; font-weight: 600;
+    font-family: "Inter", sans-serif; cursor: pointer;
+}
+
+.upload-page .analysis-status {
+display: none; margin-top: 16px; padding: 14px 16px; border-radius: 10px;
+    background: var(--cream-dim); border: 1px solid var(--line); font-size: 13px; color: var(--ink-soft);
+}
+
+.upload-page .analysis-status.show {
+display: block;
+}
+
+.upload-page .analysis-status.error {
+background: #FBEAE6; border-color: #E8B8AD; color: #9B3624;
+}
+
+.upload-page .disclaimer-strip {
+display: flex; align-items: center; gap: 12px; background: var(--cream-dim);
+    border-radius: var(--radius); padding: 16px 20px; font-size: 12.5px; color: var(--ink-soft);
+}
+
+.upload-page .disclaimer-strip svg {
+flex-shrink: 0;
+}
+
+.upload-page .disclaimer-strip strong {
+color: var(--ink);
+}
+
+.upload-page footer {
+border-top: 1px solid var(--line); padding: 28px 0 40px; margin-top: 32px; text-align: center;
+}
+
+.upload-page .footer-mark {
+font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+.upload-page .form-row, .upload-page .upload-grid {
+grid-template-columns: 1fr;
+}
+}
+
+/* ==================== LOGIN PAGE ==================== */
+
+.login-page .wrap {
+max-width: 1120px; margin: 0 auto; padding: 0 32px; width: 100%;
+}
+
+.login-page nav {
+display: flex; align-items: center; justify-content: space-between; padding: 24px 0;
+}
+
+.login-page .logo {
+display: flex; align-items: center; gap: 9px; text-decoration: none;
+}
+
+.login-page .logo-text {
+font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: var(--ink);
+}
+
+.login-page .center-stage {
+flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 32px;
+}
+
+.login-page .login-card {
+background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 40px; width: 100%; max-width: 400px;
+}
+
+.login-page .eyebrow {
+display: inline-flex; align-items: center; gap: 6px; background: var(--cream-dim);
+    padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600;
+    color: var(--ink-soft); margin-bottom: 20px;
+}
+
+.login-page .eyebrow .dot {
+width: 6px; height: 6px; border-radius: 50%; background: var(--lime-deep);
+}
+
+.login-page h1 {
+font-size: 26px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 8px;
+}
+
+.login-page .subtitle {
+font-size: 14px; color: var(--ink-soft); margin-bottom: 28px;
+}
+
+.login-page .field {
+margin-bottom: 18px;
+}
+
+.login-page .field label {
+display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px;
+}
+
+.login-page .field input, .login-page .field select {
+width: 100%; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 8px;
+    font-size: 14.5px; font-family: "Inter", sans-serif; background: var(--cream);
+    color: var(--ink); outline: none; transition: border-color 0.15s ease;
+}
+
+.login-page .field input:focus, .login-page .field select:focus {
+border-color: var(--ink);
+}
+
+.login-page .field-hint {
+font-size: 12px; color: var(--ink-soft); margin-top: 6px;
+}
+
+.login-page .btn-submit {
+width: 100%; background: var(--ink); color: var(--white); border: none;
+    padding: 13px; border-radius: 100px; font-size: 15px; font-weight: 600;
+    font-family: "Inter", sans-serif; cursor: pointer; margin-top: 6px;
+    transition: opacity 0.15s ease;
+}
+
+.login-page .btn-submit:hover {
+opacity: 0.88;
+}
+
+.login-page .role-tabs {
+display: flex; gap: 6px; background: var(--cream-dim); padding: 4px; border-radius: 10px; margin-bottom: 22px;
+}
+
+.login-page .role-tab {
+flex: 1; text-align: center; padding: 9px 6px; border-radius: 7px; font-size: 12.5px;
+    font-weight: 600; cursor: pointer; color: var(--ink-soft); user-select: none;
+}
+
+.login-page .role-tab.active {
+background: var(--white); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.login-page .disclaimer-mini {
+margin-top: 20px; font-size: 11.5px; color: var(--ink-soft); text-align: center;
+}
+
+.login-page footer {
+padding: 24px 0; text-align: center;
+}
+
+.login-page .footer-mark {
+font-family: "IBM Plex Mono", monospace; font-size: 11.5px; color: var(--ink-soft);
+}
+
+/* =========================================
+   ANALYSIS LOADING INDICATOR
+   ========================================= */
+
+.analysis-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 8px;
+  animation: neuroscreen-spin 0.8s linear infinite;
+}
+
+@keyframes neuroscreen-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-primary:disabled {
+  cursor: wait;
+}
+
+/* =========================================================
+   NeuroScreen — Profile Pill
+   ========================================================= */
+
+.user-menu {
+    position: relative;
+}
+
+
+/* Profile pill */
+
+.user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    height: 38px;
+
+    padding: 4px 10px 4px 5px;
+
+    border: 1px solid #dedbd0;
+    border-radius: 20px;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.user-chip:hover {
+    border-color: #c9c5b8;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Avatar */
+
+.user-avatar {
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #d4ff5c;
+    color: #111111;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+/* Nama */
+
+.user-display-name {
+    max-width: 145px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/* Panah */
+
+.user-menu-arrow {
+    margin-left: 1px;
+
+    font-size: 8px;
+    color: #666666;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   Dropdown
+   ========================================================= */
+
+.user-dropdown {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    width: 230px;
+
+    padding: 12px;
+
+    background: #ffffff;
+
+    border: 1px solid #dedbd0;
+    border-radius: 12px;
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.08);
+
+    z-index: 9999;
+
+    display: none;
+}
+
+.user-dropdown.show {
+    display: block;
+}
+
+
+/* Informasi user */
+
+.user-dropdown-info {
+    padding: 3px 5px 9px;
+}
+
+.user-dropdown-name {
+    color: #111111;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    line-height: 1.4;
+}
+
+.user-dropdown-email {
+    margin-top: 3px;
+
+    color: #777777;
+
+    font-size: 11px;
+    font-weight: 400;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Garis */
+
+.user-dropdown-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 2px 0 6px;
+
+    background: #e5e2d8;
+}
+
+
+/* Logout */
+
+.logout-btn {
+    width: 100%;
+
+    padding: 8px 5px;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #a33a3a;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #f8f5ef;
+}
+
+/* =========================================================
+   Dropdown
+   ========================================================= */
+
+.user-dropdown {
+  position: absolute;
+
+  top: calc(100% + 6px);
+  right: 0;
+
+  width: 200px;
+
+  padding: 12px;
+
+  background: #ffffff;
+
+  border: 1px solid #dedbd0;
+  border-radius: 10px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.10);
+
+  z-index: 9999;
+
+  display: none;
+}
+
+.user-dropdown.show {
+  display: block;
+}
+
+
+/* =========================================================
+   User information
+   ========================================================= */
+
+.user-dropdown-info {
+  padding: 4px 5px 9px;
+}
+
+.user-dropdown-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111;
+
+  line-height: 1.4;
+}
+
+.user-dropdown-email {
+  margin-top: 3px;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  color: #777;
+
+  line-height: 1.4;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   Divider
+   ========================================================= */
+
+.user-dropdown-divider {
+  width: 100%;
+  height: 1px;
+
+  background: #e5e2d8;
+
+  margin: 3px 0 6px;
+}
+
+
+/* =========================================================
+   Logout
+   ========================================================= */
+
+.logout-btn {
+  width: 100%;
+
+  border: 0;
+  background: transparent;
+
+  padding: 9px 7px;
+
+  text-align: left;
+
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #a33a3a;
+
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #fff3f3;
+}

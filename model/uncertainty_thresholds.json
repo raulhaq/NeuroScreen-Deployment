@@ -1,0 +1,15 @@
+{
+  "rendah_sedang_threshold": 0.014660305343568325,
+  "sedang_tinggi_threshold": 0.05282749608159065,
+  "based_on": "percentile 33 & 66 dari seluruh validation set (9 fold gabungan)",
+  "n_segments_analyzed": 8079,
+  "distribution_stats": {
+    "min": 3.077970589515644e-08,
+    "p25": 0.009758261032402515,
+    "median": 0.03055691532790661,
+    "p75": 0.06917704641819,
+    "max": 0.31562307476997375,
+    "mean": 0.0448170080780983,
+    "std": 0.043681059032678604
+  }
+}

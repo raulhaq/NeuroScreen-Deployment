@@ -1,0 +1,100 @@
+{
+  "mc_dropout_passes": 30,
+  "overall_brier_raw": 0.028496919199824333,
+  "overall_brier_platt": 0.019934858800093925,
+  "overall_brier_isotonic": 0.01574886031448841,
+  "overall_mean_uncertainty": 0.04502449184656143,
+  "recommended_calibrator": "isotonic",
+  "per_fold": [
+    {
+      "fold": 1,
+      "brier_raw": 0.025680605322122574,
+      "brier_platt": 0.021102286869363218,
+      "brier_isotonic": 0.017918193712830544,
+      "auc_raw": 0.9975049726935878,
+      "acc_raw": 0.9688195991091314,
+      "mean_uncertainty": 0.03801767900586128,
+      "max_uncertainty": 0.2627091407775879
+    },
+    {
+      "fold": 2,
+      "brier_raw": 0.04859352111816406,
+      "brier_platt": 0.04381148018791531,
+      "brier_isotonic": 0.03882802650332451,
+      "auc_raw": 0.9858681256541386,
+      "acc_raw": 0.9420935412026726,
+      "mean_uncertainty": 0.047130048274993896,
+      "max_uncertainty": 0.188724547624588
+    },
+    {
+      "fold": 3,
+      "brier_raw": 0.012994112446904182,
+      "brier_platt": 0.007041967723828157,
+      "brier_isotonic": 0.005039256531745195,
+      "auc_raw": 0.9997569456500712,
+      "acc_raw": 0.9899777282850779,
+      "mean_uncertainty": 0.03516725078225136,
+      "max_uncertainty": 0.23683635890483856
+    },
+    {
+      "fold": 4,
+      "brier_raw": 0.019307849928736687,
+      "brier_platt": 0.009633181959994873,
+      "brier_isotonic": 0.0062529523856937885,
+      "auc_raw": 0.9996428589143903,
+      "acc_raw": 0.9855233853006682,
+      "mean_uncertainty": 0.04285494610667229,
+      "max_uncertainty": 0.18176355957984924
+    },
+    {
+      "fold": 5,
+      "brier_raw": 0.054656948894262314,
+      "brier_platt": 0.0339280660119482,
+      "brier_isotonic": 0.025151612237095833,
+      "auc_raw": 0.9949653027514744,
+      "acc_raw": 0.9309576837416481,
+      "mean_uncertainty": 0.07094542682170868,
+      "max_uncertainty": 0.2719302177429199
+    },
+    {
+      "fold": 6,
+      "brier_raw": 0.02304983325302601,
+      "brier_platt": 0.019072637937158042,
+      "brier_isotonic": 0.016373688355088234,
+      "auc_raw": 0.9980506049077138,
+      "acc_raw": 0.9721603563474388,
+      "mean_uncertainty": 0.04228530079126358,
+      "max_uncertainty": 0.2168392688035965
+    },
+    {
+      "fold": 7,
+      "brier_raw": 0.028061550110578537,
+      "brier_platt": 0.012791046374780004,
+      "brier_isotonic": 0.006239095702767372,
+      "auc_raw": 0.9980462535793828,
+      "acc_raw": 0.9899665551839465,
+      "mean_uncertainty": 0.051484983414411545,
+      "max_uncertainty": 0.28267914056777954
+    },
+    {
+      "fold": 8,
+      "brier_raw": 0.03164299577474594,
+      "brier_platt": 0.02599586973496723,
+      "brier_isotonic": 0.022259769961237907,
+      "auc_raw": 0.9954412583518931,
+      "acc_raw": 0.9687848383500557,
+      "mean_uncertainty": 0.043520018458366394,
+      "max_uncertainty": 0.22252772748470306
+    },
+    {
+      "fold": 9,
+      "brier_raw": 0.012470009736716747,
+      "brier_platt": 0.0060204917677914764,
+      "brier_isotonic": 0.0036603491753339767,
+      "auc_raw": 0.9998757158765511,
+      "acc_raw": 0.9933110367892977,
+      "mean_uncertainty": 0.033807769417762756,
+      "max_uncertainty": 0.22790010273456573
+    }
+  ]
+}
